@@ -4,11 +4,11 @@ import CartItem from '../Component/CartItem';
 
 interface CartProps {
   cart: CartItemType[];
-  onRemove: (productId: number) => void;
-  onUpdateQuantity: (productId: number, quantity: number) => void;
+  addToCart: (productId: number, quantity: number) => void;
+  removeFromCart: (productId: number) => void;
 }
 
-const Cart: React.FC<CartProps> = ({ cart, onRemove, onUpdateQuantity }) => {
+const Cart: React.FC<CartProps> = ({ cart, addToCart, removeFromCart }) => {
   const total = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
 
   return (
@@ -19,7 +19,7 @@ const Cart: React.FC<CartProps> = ({ cart, onRemove, onUpdateQuantity }) => {
         ) : (
           <>
             {cart.map((item) => (
-              <CartItem key={item.product.id} item={item} onRemove={onRemove} onUpdateQuantity={onUpdateQuantity} />
+              <CartItem key={item.product.id} cartItems={cartItems} onRemove={removeFromCart} addToCart={addToCart} />
             ))}
             <p className="text-2xl">Total: ${total.toFixed(2)}</p>
             <Button onClickProps={() => alert('Proceed to checkout')}>Checkout</Button>

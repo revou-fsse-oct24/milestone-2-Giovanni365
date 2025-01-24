@@ -28,7 +28,7 @@ export interface Category {
     image: string;
 }
 
-export interface CartItem {
+export interface CartItemType {
   product: Product;
   quantity: number;
 }
