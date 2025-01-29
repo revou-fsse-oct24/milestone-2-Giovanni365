@@ -74,7 +74,6 @@ const Login = ({ loginData, error }: any) => {
         router.replace('/product');
     }
 
-
     return (
         <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
             <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
